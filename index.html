@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AISSISTANT</title>
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+  <body>
+    <div class="form-container">
+      <sp-theme color="dark" scale="medium">
+        <sp-button id="chat-gpt-button" size="l">Autocomplete via ChatGPT</sp-button>
+      </sp-theme>
+
+      <form>
+        <label>EAN</label>
+        <input data-ai-ean name="ean" placeholder="EAN" type="text">
+
+        <label>Name</label>
+        <input data-ai-name name="name" placeholder="Name" type="text">
+
+        <label>Width</label>
+        <input data-ai-width name="width" placeholder="Width" type="text">
+
+        <label>Height</label>
+        <input data-ai-height name="height" placeholder="Height" type="text">
+
+        <label>Color</label>
+        <input data-ai-color name="color" placeholder="Color" type="text">
+
+        <label>Weight</label>
+        <input data-ai-weight name="weight" placeholder="Weight" type="text">
+      </form>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
