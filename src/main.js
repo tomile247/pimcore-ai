@@ -46,7 +46,8 @@ actionButton.addEventListener('click', () => {
     Find product which has EAN code ${productEANInputField.value}.
     Provide me ${objectKeys.join(', ')} attribute values for that product.                     
     Return data in json format without beautifying and without extra text content.
-    Please do not return extra information about the product or questions or attributes I didn't mentioned.       
+    Please do not return extra information about the product or questions or attributes I didn't mentioned.
+    Please provide me also source link from which data is taken under the same JSON using key "source".       
     `
 
     if (additionalModifications.length > 0) {
@@ -66,10 +67,14 @@ actionButton.addEventListener('click', () => {
             for (let input of objectKeys) {
                 document.querySelector(`input[name=${input}]`).value = json[input];
             }
+            showMessage('info', `Source: <a target="_blank" href="${json.source}">${json.source}</a>`, false);
             showMessage('positive', 'Form filled successfully.');
-        });
+        })
+            .catch(error => {
+                showMessage('negative',error);
+            });
     } else {
-        showMessage('negative','Something went wrong');
+        showMessage('negative','EAN code is not valid');
     }
 
     actionButton.removeAttribute('pending');
@@ -124,7 +129,7 @@ function isEanValid() {
     return eanInputField.value.length <= 13 && eanInputField.value.length >= 8;
 }
 
-function showMessage(variant, message) {
+function showMessage(variant, message, timeout = true) {
 
     const toastElement = document.createElement('sp-toast');
     const toastMessagesContainerElement = document.querySelector('#toast-messages-container');
@@ -135,8 +140,10 @@ function showMessage(variant, message) {
     toastElement.setAttribute('variant', variant);
     toastElement.setAttribute('open', '');
 
-    setTimeout(() => {
-        toastElement.removeAttribute('open');
-        toastElement.remove();
-    }, 5000)
+    if(timeout) {
+        setTimeout(() => {
+            toastElement.removeAttribute('open');
+            toastElement.remove();
+        }, 5000)
+    }
 }
