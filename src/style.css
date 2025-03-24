@@ -27,6 +27,15 @@ body {
   position: absolute;
 }
 
+#toast-messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 form {
   padding: 10px;
   display: flex;

@@ -5,12 +5,19 @@ const openai = new OpenAI({
     dangerouslyAllowBrowser: true
 });
 
-export function sendRequest(message) {
+export function sendRequest(message, model) {
     return openai.chat.completions.create({
-        model: "gpt-4o-search-preview",
-        web_search_options: {},
+        model: model,
+        // web_search_options: {},
         messages: [
-            {"role": "user", "content": message},
+            {
+                "role": "system",
+                "content": "You are a helpful assistant that responds with required product attributes data."
+            },
+            {
+                "role": "user",
+                "content": message
+            },
         ],
     });
 }

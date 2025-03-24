@@ -1,4 +1,5 @@
 import editIcon from '/edit.svg';
+import wandIcon from '/wand.svg';
 
 export function createAdditionalElements() {
     document.querySelectorAll('input').forEach((input) => {
@@ -14,6 +15,10 @@ export function createAdditionalElements() {
         dialogElement.setAttribute('type', 'modal');
 
         themeElement.innerHTML = `
+            <sp-action-button id="js-single-input-button-${input.name}" class="js-single-input-button" data-target="${input.name}">
+                <img src="${wandIcon}" slot="icon">
+            </sp-action-button>
+
             <overlay-trigger type="modal">
                 <sp-dialog-base underlay slot="click-content">
                     <sp-dialog size="m">
@@ -26,7 +31,7 @@ export function createAdditionalElements() {
                             id="story-0-m"
                             multiline
                             placeholder="Add additional input description"
-                        ></sp-textfield>  
+                        ></sp-textfield>                                        
                 
                         <sp-button
                             variant="secondary"
@@ -34,7 +39,7 @@ export function createAdditionalElements() {
                             slot="button"
                             onclick="this.dispatchEvent(new Event('close', { bubbles: true, composed: true }));"
                         >
-                            Ok
+                            Close
                         </sp-button>           
                     </sp-dialog>
                 </sp-dialog-base>
@@ -45,12 +50,13 @@ export function createAdditionalElements() {
                 </sp-button>                             
             </overlay-trigger>
         `
-
         themeElement.classList.add('additional-input');
         themeElement.style.left = `${positionRight + 20}px`;
         themeElement.style.top = `${positionTop}px`;
 
-        input.parentNode.insertBefore(themeElement, input.nextSibling);
+        if(input.name !== 'ean') {
+            input.parentNode.insertBefore(themeElement, input.nextSibling);
+        }
     })
 }
 
