@@ -1,34 +1,25 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>AISSISTANT</title>
     <link rel="stylesheet" href="src/style.css">
-  </head>
-  <body>
-  <sp-theme color="dark" scale="medium">
-    <div id="toast-messages-container"></div>
-  </sp-theme>
 
-  <div class="action-container">
-    <sp-theme color="dark" scale="medium">
-      <sp-field-label for="ai-model-select">AI Model:</sp-field-label>
-      <sp-picker id="ai-model-select" value="gpt-3.5-turbo">
-        <sp-menu-item value="gpt-3.5-turbo">gpt-3.5-turbo</sp-menu-item>
-        <sp-menu-item disabled value="gpt-4o-mini-search-preview">gpt-4o-mini-search-preview</sp-menu-item>
-        <sp-menu-item disabled value="gpt-4o-search-preview">gpt-4o-search-preview</sp-menu-item>
-        <sp-menu-item disabled value="gpt-4o">gpt-4o</sp-menu-item>
-        <sp-menu-item value="gpt-4o-mini">gpt-4o-mini</sp-menu-item>
-      </sp-picker>
+    <style>
+        .chat-container {
+            position: fixed;
+            bottom: 1em;
+            left: 1em;
+        }
+    </style>
 
-      <sp-button id="chat-gpt-button" size="m" >Autocomplete via ChatGPT</sp-button>
-    </sp-theme>
-  </div>
+</head>
+<body>
 
-    <div class="form-container">
-      <form>
+<div class="form-container">
+    <form>
         <label>EAN</label>
         <input data-ai-ean name="ean" placeholder="EAN" type="text">
 
@@ -46,9 +37,12 @@
 
         <label>Weight</label>
         <input data-ai-weight name="weight" placeholder="Weight" type="text">
-      </form>
-    </div>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        <label for="description">Description</label>
+        <input id="description" data-ai-description name="description" placeholder="Description" type="text">
+    </form>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>

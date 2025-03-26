@@ -8,11 +8,18 @@ const openai = new OpenAI({
 export function sendRequest(message, model) {
     return openai.chat.completions.create({
         model: model,
-        // web_search_options: {},
         messages: [
             {
                 "role": "system",
-                "content": "You are a helpful assistant that responds with required product attributes data."
+                "content":
+                        `You are an AI assistant that provides structured JSON responses. 
+                        Reply only in the following format without any extra text or backticks:
+                        {
+                            "EAN": "<ean_value>",                            
+                            "attributes": {
+                                "<attribute_name>": { "value": "<attribute_value>", "multiple": <true_or_false> }
+                            },                            
+                        }`
             },
             {
                 "role": "user",

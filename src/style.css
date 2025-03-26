@@ -27,6 +27,24 @@ body {
   position: absolute;
 }
 
+.form-action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-action-container {
+  display: flex;
+  gap: 10px;
+}
+
+#response-toast {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  max-height: 100vh;
+}
+
 #toast-messages-container {
   display: flex;
   flex-direction: column;
