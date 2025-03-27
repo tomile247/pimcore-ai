@@ -18,8 +18,10 @@ export function sendRequest(message, model) {
                             "EAN": "<ean_value>",                            
                             "attributes": {
                                 "<attribute_name>": { "value": "<attribute_value>", "multiple": <true_or_false> }
-                            },                            
-                        }`
+                            },
+                            "response": "<normal_chatgpt_response>",                                                       
+                        }                       
+                        `
             },
             {
                 "role": "user",

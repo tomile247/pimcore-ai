@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>AISSISTANT</title>
     <link rel="stylesheet" href="src/style.css">
@@ -38,8 +37,16 @@
         <label>Weight</label>
         <input data-ai-weight name="weight" placeholder="Weight" type="text">
 
-        <label for="description">Description</label>
-        <input id="description" data-ai-description name="description" placeholder="Description" type="text">
+        <label for="size">Size</label>
+        <select name="size" id="size">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
     </form>
 </div>
 
